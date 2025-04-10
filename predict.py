@@ -1,3 +1,4 @@
+import re
 from transformers import DistilBertForSequenceClassification, DistilBertTokenizerFast
 import torch
 
@@ -23,12 +24,25 @@ def predict(text):
 
     return predicted_class, probabilities
 
+def preprocess(input_text):
+
+    # remove puncutation
+    rePunc = re.sub(r'[^\w\s]', '', input_text)
+
+    # return text with lowercase words only
+    return rePunc.lower()
+    
 while True:
     # Replace with your input text
     text = input("Enter a piece of text [1 to exit]: ")
     if text == '1': break
-    predicted_class, probabilities = predict(text)
     
-    # 4. Display the results
+    # Preprocess text
+    cleaned = preprocess(text)
+
+    # Predict class
+    predicted_class, probabilities = predict(cleaned)
+    
+    # Display results
     print(f"\nPredicted class: {predicted_class}\nProbablity matrix: {probabilities}")  # 0 or 1
 
