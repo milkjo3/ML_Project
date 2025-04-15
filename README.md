@@ -38,7 +38,7 @@ This project uses a **DistilBERT** model to detect hate speech in text data. The
    ```bash
    git clone https://github.com/milkjo3/ML_Project
    cd hate-speech-detection
-2. Create a virtual enviornment with python version 3.11+ and activate it:
+2. Create a virtual enviornment with python version 3.10 - 3.11 and activate it:
     ```
     python -m venv myvenv
     source myvenv/bin/activate # Linux/MacOS users
